@@ -2,48 +2,60 @@
 
 //Classes
 class contact {
-    constructor(username, firstName, lastName, adress, telephone, id) {
+    constructor(username, firstName, lastName, address, telephone, id) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.adress = adress;
+        this.address = address;
         this.telephone = telephone;
         this.id = id;
 
+        //Create Html Objects
         this.initialize();
     }
 
     initialize() {
-        const div = document.createElement('div');
-        div.classList.add('contact-item');
+        //Main Div
+        const tr = document.createElement('tr');
 
-        const letterDiv = document.createElement('div');
-        letterDiv.classList.add('letter-div');
-        const letter = document.createElement('p');
-        letter.classList.add('letter');
+        //Letter Icon
+        const letter = document.createElement('td');
+        letter.classList.add('letter-icon');
         letter.innerText = this.firstName.charAt(0).toUpperCase();
-        letterDiv.appendChild(letter);
+        tr.appendChild(letter);
 
-        div.appendChild(letterDiv);
-
-        const fullName = document.createElement('p');
+        //Name
+        const fullName = document.createElement('td');
         fullName.innerText = this.firstName + " " + this.lastName;
-        fullName.classList.add('contact-name');
-        div.appendChild(fullName);
+        fullName.classList.add('td-name');
+        tr.appendChild(fullName);
 
-        div.classList.add(this.id);
+        //Telepohone
+        const tel = document.createElement('td');
+        tel.innerText = this.telephone;
+        tel.classList.add('td-tel');
+        tr.appendChild(tel);
 
-        this.htmlObject = div;
+        //Email
+        const email = document.createElement('td');
+        email.innerText = this.address;
+        email.classList.add('td-address');
+        tr.appendChild(email);
 
-        div.addEventListener('click', (event) => {
-            console.log("hello");
+        tr.classList.add(this.id);
+
+        //Asign object to variable
+        this.htmlObject = tr;
+
+        //Eventlistener for contact-div
+        tr.addEventListener('click', (event) => {
             contactInformation(event);
         });
     }
 }
 
 //Html Objects
-const contactsUl = document.querySelector('#contactList');
-const logoutButton = document.querySelector('#logout');
+const contact_table_body = document.querySelector('#table-body');
+const logoutButton = document.querySelector('#profile-btn');
 const newContactButton = document.querySelector('#addContact');
 const text_no_contacts = document.querySelector('.no-contacts');
 
@@ -100,7 +112,7 @@ function loadContacts(email, password) {
 
         //Update html object
         contactList.forEach(contact => {
-            contactsUl.appendChild(contact.htmlObject);
+            contact_table_body.appendChild(contact.htmlObject);
         })
     })
     endLoading();
@@ -159,19 +171,19 @@ function search(event) {
     event.preventDefault();
 
     if (searchInput.value == "") {
-        contactsUl.innerHTML = "";
+        contact_table_body.innerHTML = "";
         contactList.forEach(contact => {
             
-            contactsUl.appendChild(contact.htmlObject);
+            contact_table_body.appendChild(contact.htmlObject);
             })
         noContact();
         return;
     }
 
-    contactsUl.innerHTML = "";
+    contact_table_body.innerHTML = "";
     contactList.forEach(contactElement => {
         if (contactElement.firstName.toLowerCase() == searchInput.value.toLowerCase() || contactElement.lastName.toLowerCase() == searchInput.value.toLowerCase()  || searchInput.value.toLowerCase() == contactElement.firstName.toLowerCase() + " " + contactElement.lastName.toLowerCase()) {
-            contactsUl.appendChild(contactElement.htmlObject);
+            contact_table_body.appendChild(contactElement.htmlObject);
         }
     });
     noContact();
@@ -194,7 +206,7 @@ function contactInformation(event) {
 }
 
 function noContact() {
-    if (contactsUl.children.length == 0) {
+    if (contact_table_body.children.length == 0) {
         text_no_contacts.style.display = 'block';
     } else {
         text_no_contacts.style.display = 'none';

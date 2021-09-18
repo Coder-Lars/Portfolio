@@ -1,3 +1,12 @@
+:root {
+    --primary-blue: #487EB0;
+    --secondary-blue: #40739E;
+    --primary-black: #353B48;
+    --secondary-black: #2F3640;
+    --button-hover: #3c6b97;
+    --off-white: #F5F6FA;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -5,18 +14,17 @@
 }
 
 body {
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: linear-gradient(#DA22FF, #9733EE);
+    overflow-y: hidden;
+    background: white;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .content {
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -27,9 +35,9 @@ body {
 
 
 .nav {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--primary-blue);
     width: 100%;
-    color: #DA22FF;
+    color: white;
     display: flex;
     padding: 15px;
     justify-content: space-around;
@@ -37,31 +45,14 @@ body {
 
 
 .main {
-    width: 90%;
-    min-height: 7%;
-    max-height: 75%;
+    overflow-y: scroll;
+    width: 95%;
+    height: 95%;
     background-color: white;
     margin-bottom: 20px;
     box-shadow: rgba(149, 157, 165, 0) 0px 8px 24px;
-    padding: 20px;
+    padding: 0 2px;
     border-radius: 5px;
-    overflow-y: hidden;
-}
-
-.main ul {
-    height: 100%;
-    overflow-y: scroll;
-}
-
-@media (min-width: 1000px) {
-    .main {
-        width: 90%;
-    } 
-
-    .topBar {
-        width: 90%;
-    }
-
 }
 
 @media (max-width: 687px) {
@@ -69,6 +60,10 @@ body {
         font-size: 20px;
         align-self: center;
         margin: 0;
+    }
+
+    .topBar {
+        width: 100%;
     }
 }
 
@@ -80,7 +75,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #DA22FF;
+    color: var(--primary-blue);
     font-size: 1.4rem;
     margin-right: 15px;
     font-weight: 400;
@@ -88,51 +83,131 @@ body {
 }
 
 .contact-item {
-    background-color: #EFEFEF;
     display: flex;
     align-items: center;
     padding: 7px;
-    border-radius: 100px;
+    border-radius: 3px;
     margin: 15px 0;
     margin-right: 7px;
     color: #686868;
 }
 
 .contact-item:hover {
-    opacity: 0.7;
+    background: var(--off-white);
 }
 
 .contact-item .contact-name {
     font-weight: 400;
 }
 
+#contactList {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    width: 95%;
+}
+
+
+#contactList tbody {
+    width: 100%;
+}
+
+#contactList thead tr {
+    text-align: left;
+    color: rgba(102, 102, 102, 0.822);
+}
+
+tbody tr:hover {
+    background: var(--off-white);
+}
+
+tbody tr {
+    position: relative;
+}
+
+#contactList thead {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.171);
+}
+
+#contactList thead th {
+    padding: 10px 5px;
+    font-weight: 500;
+}
+
+#contactList tbody td {
+    margin-top: 10px 0;
+    text-align: left;
+    padding: 25px 5px;
+    color: rgb(92, 92, 92);
+}
+
+.letter-icon {
+    font-size: 1.3rem;
+    top: 7px;
+    left: 2px;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.116) 0 3px 10px;
+    border-radius: 100px;
+    text-align: center !important;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: var(--primary-blue) !important;
+}
+
+
+
+
+
+#th-icon {
+    color: transparent;
+}
+
 #addContact {
     border: none;
-    background-image: linear-gradient(90deg, #DA22FF, #9733EE);
+    background: #558dbd;
+    box-shadow: rgba(0, 0, 0, 0.075) 0 3px 10px;
     padding: 15px 24px;
     color: white;
-    border-radius: 100px;
+    border-radius: 3px;
     font-weight: bold;
-    transition: all 0.1s ease;
+    transition: background 0.2s;
 }
 
 #addContact:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
-.btn-logout {
-    background-color: transparent;
+#addContact:active {
+    opacity: 1;
+}
+
+.btn-profile {
+    background-color: white;
+    color: var(--primary-blue);
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
     border: none;
-    color: #686868;
-    font-size: 1rem;
+    font-size: 1.7rem;
+    transition: all 0.2s ease;
 }
 
-.btn-logout:hover {
+.nav-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn-profile:hover {
     opacity: 0.8;
 }
 
 .nav button {
-    margin: 0 10px;
+    margin: 0 20px;
 }
 
 .topBar form {
@@ -148,7 +223,8 @@ body {
     box-shadow: inset 0px 0px 30px rgb(212, 212, 212);
     padding: 15px;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 3px;
+    font-size: 0.9rem;
     border: none;
     color: black;
     
@@ -157,10 +233,11 @@ body {
 .topBar form button {
     position: absolute;
     right: 0;
+    font-size: 0.9rem;
     top: 0;
     border: none;
-    background-image: linear-gradient(90deg, #DA22FF, #9733EE);
-    border-radius: 100px;
+    background-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 3px;
     color: white;
     padding: 15px 60px;
 }
@@ -179,9 +256,9 @@ body {
 }
 
 .topBar {
-    margin-top: 40px;
-    width: 90%;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    width: 95%;
+    margin-bottom: 8px;
     background-color: white;
     border-radius: 5px;
     padding: 14px;
@@ -217,4 +294,16 @@ body {
     position: absolute;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.288) 0px 2px 8px 0px;
+}
+
+@media (max-width: 1000px) {
+    .td-address,
+    #th-address {
+        display: none;
+    }
+
+    .topBar form button,
+    #searchInput {
+        font-size: 0.8rem;
+    }
 }

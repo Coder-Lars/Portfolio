@@ -26,7 +26,7 @@ function register(event) {
 
         //Check if both passwords match
         if (input_password.value != input_confirm_password.value) {
-            text_error.innerHTML = 'Both Passwrods must match';
+            text_error.innerHTML = 'Both Passwords must match';
             text_error.style.display = 'block';
             endLoading();
             return;

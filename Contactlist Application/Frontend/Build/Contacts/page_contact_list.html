@@ -14,7 +14,7 @@
             <h1 class="mainHeading">Contacts</h1>
             <div class="nav-buttons">
                 <button id="addContact" class="btn-add-contact">Add Contact</button>
-                <button id="logout" class="btn-logout">Logout</button>
+                <button id="profile-btn" class="btn-profile">L</button>
             </div>
         </div>
         <div class="topBar">
@@ -25,8 +25,20 @@
         </div>
         <div class="main">
             
-            <p style="text-align: center; color: rgba(0, 0, 0, 0.561);" class="no-contacts">No contacts found</p>
-            <ul id="contactList"></ul>
+            <table id="contactList">
+                <thead>
+                    <tr>
+                        <th id="th-icon">icon</th>
+                        <th id="th-name">Name</th>
+                        <th id="th-tel">Telephone</th>
+                        <th id="th-address">Address</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+
+            </table>
+            <p style="text-align: center; color: rgba(0, 0, 0, 0.561); padding: 30px;" class="no-contacts">No contacts found</p>
         </div>
     </div>
     
