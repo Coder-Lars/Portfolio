@@ -16,24 +16,26 @@ class contact {
         const div = document.createElement('div');
         div.classList.add('contact-item');
 
+        const letterDiv = document.createElement('div');
+        letterDiv.classList.add('letter-div');
+        const letter = document.createElement('p');
+        letter.classList.add('letter');
+        letter.innerText = this.firstName.charAt(0).toUpperCase();
+        letterDiv.appendChild(letter);
+
+        div.appendChild(letterDiv);
+
         const fullName = document.createElement('p');
         fullName.innerText = this.firstName + " " + this.lastName;
         fullName.classList.add('contact-name');
         div.appendChild(fullName);
 
-        const mobileNumber = document.createElement('p');
-        mobileNumber.innerText = this.telephone;
-        div.appendChild(mobileNumber);
-
-        const adress = document.createElement('p');
-        adress.innerText = this.adress;
-        div.appendChild(adress);
-        
         div.classList.add(this.id);
 
         this.htmlObject = div;
 
         div.addEventListener('click', (event) => {
+            console.log("hello");
             contactInformation(event);
         });
     }
@@ -43,20 +45,22 @@ class contact {
 const contactsUl = document.querySelector('#contactList');
 const logoutButton = document.querySelector('#logout');
 const newContactButton = document.querySelector('#addContact');
+const text_no_contacts = document.querySelector('.no-contacts');
 
 const searchInput = document.querySelector('#searchInput');
 const searchButton = document.querySelector('#btn-search');
 
 
-const loadingBox = document.querySelector('.loadBox');
+const animation_load = document.querySelector('.loadBox');
 const content = document.querySelector('.content');
 
 //Variables
-var contactList = [];//[new contact("Lars", "Dietzel", "0176 60424128", "Reginbaldstrße 13A"), new contact("Hans", "Dieter", "0176 60424128", "Reginbaldstrße 13A"), new contact("Karl", "Dietzel", "0176 60424128", "Reginbaldstrße 13A"), new contact("Christiano", "Ronaldo", "0176 60424128", "Reginbaldstrße 13A"), new contact("Peter", "Schmidt", "0176 60424128", "Reginbaldstrße 13A"), new contact("Max", "Mustermann", "0176 60424128", "Reginbaldstrße 13A"), new contact("Leonardo", "Davinci", "0176 60424128", "Reginbaldstrße 13A"),];
+var contactList = [];
 
 //Eventlisteners
 logoutButton.addEventListener('click', logout);
 searchButton.addEventListener('click', search);
+searchInput.addEventListener('input', search);
 newContactButton.addEventListener('click', addNewContact);
 
     //OnLoad
@@ -66,23 +70,19 @@ window.addEventListener('load', () => {
          //Get localstorage
          const l_username = localStorage.getItem('USERNAME');
          const l_password = localStorage.getItem('PASSWORD');
- 
+        
          loadContacts(l_username, l_password);
     }
 
     else {
         document.body.innerHTML = "Error";
-        open('login.html', '_self')
+        open('../Auth/page_login.html', '_self')
     }
-
-       
 });
-
-
 
 //Functions
 function addNewContact() {
-    open('newContact.html', '_self');
+    open('page_new_contact.html', '_self');
 }
 
 function loadContacts(email, password) {
@@ -95,22 +95,21 @@ function loadContacts(email, password) {
             console.log(i_contact);
             contactList.push(new contact(i_contact.username, i_contact.firstName, i_contact.lastName, i_contact.address, i_contact.telephone, i_contact.id));
         });
-
+        listCheck(contactList);
         contactList = sortContactList(contactList);
 
         //Update html object
         contactList.forEach(contact => {
-        contactsUl.appendChild(contact.htmlObject);
+            contactsUl.appendChild(contact.htmlObject);
         })
     })
-
     endLoading();
 }
 
 function logout(event) {
     localStorage.clear();
     
-    open("login.html", "_self");
+    open("../Auth/page_login.html", "_self");
 }
 
 function sortContactList(n_contactList) {
@@ -135,7 +134,7 @@ function sortContactList(n_contactList) {
 function fetchContacts(usernameI, passwordI) {
     const promise = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://192.168.3.239:8080/contacts');
+        xhr.open('POST', 'http://192.168.178.57:8080/contacts');
 
         xhr.responseType = 'json';
 
@@ -165,6 +164,7 @@ function search(event) {
             
             contactsUl.appendChild(contact.htmlObject);
             })
+        noContact();
         return;
     }
 
@@ -174,20 +174,39 @@ function search(event) {
             contactsUl.appendChild(contactElement.htmlObject);
         }
     });
+    noContact();
 }
 
 function startLoading() {
-    loadingBox.style.display = 'flex';
+    animation_load.style.display = 'flex';
     content.style.pointerEvents = 'none';
 }
 
 function endLoading() {
-    loadingBox.style.display = 'none';
+    animation_load.style.display = 'none';
     content.style.pointerEvents = 'all'
 }
 
 function contactInformation(event) {
     i_id = event.target.classList[1];
-    localStorage.setItem('CONTACT-ID', id);
-    open('contactInformation.html', '_self');
+    localStorage.setItem('CONTACT-ID', i_id);
+    open('page_contact_information.html', '_self');
 }
+
+function noContact() {
+    if (contactsUl.children.length == 0) {
+        text_no_contacts.style.display = 'block';
+    } else {
+        text_no_contacts.style.display = 'none';
+    }
+}
+
+function listCheck(list) {
+    if (list.length == 0) {
+        text_no_contacts.style.display = 'block';
+    } else {
+        text_no_contacts.style.display = 'none';
+    }
+}
+
+

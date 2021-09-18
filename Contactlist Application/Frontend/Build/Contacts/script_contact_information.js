@@ -43,7 +43,7 @@ buttonEdit.addEventListener('click', () => {
 function loadContactInformation() {
     const promise = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://192.168.3.239:8080/getContactById');
+        xhr.open('POST', 'http://192.168.178.57:8080/getContactById');
 
         xhr.responseType = 'json';
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
-    <link rel="stylesheet" href="contacts.css">
+    <link rel="stylesheet" href="style_contact_list.css">
 </head>
 <body>
     <div class="loadBox"><div class="loadingCircle"></div></div>
@@ -22,17 +22,16 @@
                <input type="text" placeholder="Type to search.." id="searchInput">
                <button id="btn-search" class="btn-search">Search</button>
            </form>
-       </div>
+        </div>
         <div class="main">
             
-           
-            <ul id="contactList">
-            </ul>
+            <p style="text-align: center; color: rgba(0, 0, 0, 0.561);" class="no-contacts">No contacts found</p>
+            <ul id="contactList"></ul>
         </div>
     </div>
     
     
 
-    <script src="contacts.js"></script>
+    <script src="script_contact_list.js"></script>
 </body>
 </html>

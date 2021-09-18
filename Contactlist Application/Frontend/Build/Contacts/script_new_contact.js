@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
     }
     else {
         document.body.innerHTML = "Error";
-        open('login.html', '_self')
+        open('../Auth/page_login.html', '_self')
     }
 });
 
@@ -36,14 +36,14 @@ submitButton.addEventListener('click', function (event) {
 
     addContact().then(result => {
         endLoading();
-        open('contacts.html', '_self');
+        open('page_contact_list.html', '_self');
     })
 });
 
 function addContact() {
     const promise = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://192.168.3.239:8080/contact');
+        xhr.open('POST', 'http://192.168.178.57:8080/contact');
 
         xhr.responseType = 'json';
 
