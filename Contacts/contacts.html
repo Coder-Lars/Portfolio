@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="contacts.css">
+</head>
+<body>
+    <div class="loadBox"><div class="loadingCircle"></div></div>
+    <div class="content">
+        <div class="nav">
+            <h1 class="mainHeading">Contacts</h1>
+            <div class="nav-buttons">
+                <button id="addContact" class="btn-add-contact">Add Contact</button>
+                <button id="logout" class="btn-logout">Logout</button>
+            </div>
+        </div>
+        <div class="topBar">
+            <form action="submit">
+               <input type="text" placeholder="Type to search.." id="searchInput">
+               <button id="btn-search" class="btn-search">Search</button>
+           </form>
+       </div>
+        <div class="main">
+            
+           
+            <ul id="contactList">
+            </ul>
+        </div>
+    </div>
+    
+    
+
+    <script src="contacts.js"></script>
+</body>
+</html>

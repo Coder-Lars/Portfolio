@@ -1,0 +1,201 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(#DA22FF, #9733EE);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+
+.nav {
+    background-color: white;
+    width: 100%;
+    color: #DA22FF;
+    display: flex;
+    padding: 15px;
+    justify-content: space-around;
+}
+
+
+.main {
+    width: 90%;
+    height: 75%;
+    background-color: white;
+    margin-bottom: 20px;
+    box-shadow: rgba(149, 157, 165, 0) 0px 8px 24px;
+    padding: 20px;
+    border-radius: 5px;
+    overflow-y: hidden;
+}
+
+.main ul {
+    height: 90%;
+    overflow-y: scroll;
+}
+
+@media (min-width: 1000px) {
+    .main {
+        width: 90%;
+    } 
+
+    .topBar {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 687px) {
+    .mainHeading {
+        font-size: 20px;
+        align-self: center;
+        margin: 0;
+    }
+}
+
+.contact-item {
+    background-color: #EFEFEF;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    margin-right: 7px;
+    color: #686868;
+}
+
+.contact-item:hover {
+    opacity: 0.7;
+}
+
+.contact-item .contact-name {
+    font-weight: 600;
+}
+
+#addContact {
+    border: none;
+    background-image: linear-gradient(90deg, #DA22FF, #9733EE);
+    padding: 15px 24px;
+    color: white;
+    border-radius: 100px;
+    font-weight: bold;
+    transition: all 0.1s ease;
+}
+
+#addContact:hover {
+    opacity: 0.7;
+}
+
+.btn-logout {
+    background-color: transparent;
+    border: none;
+    color: #686868;
+    font-size: 1rem;
+}
+
+.btn-logout:hover {
+    opacity: 0.8;
+}
+
+.nav button {
+    margin: 0 10px;
+}
+
+.topBar form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+#searchInput {
+    background-color: #F1F1F1;
+    box-shadow: inset 0px 0px 30px rgb(212, 212, 212);
+    padding: 15px;
+    width: 100%;
+    border-radius: 100px;
+    border: none;
+    color: black;
+    
+}
+
+.topBar form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    background-image: linear-gradient(90deg, #DA22FF, #9733EE);
+    border-radius: 100px;
+    color: white;
+    padding: 15px 60px;
+}
+
+.topBar form button:hover {
+    opacity: 0.7;
+}
+
+#searchInput::placeholder {
+    color: #686868;
+}
+
+#searchInput:focus {
+    border: none;
+    outline: none;
+}
+
+.topBar {
+    margin-top: 20px;
+    width: 90%;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 14px;
+    box-shadow: rgba(149, 157, 165, 0) 0px 8px 24px;
+}
+
+.loadingCircle {
+    width: 70px;
+    height: 70px;
+    border: 10px solid rgb(209, 209, 209);
+    background: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    border-top-color: #DA22FF;
+    z-index: 10000;
+    display: block;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loadBox {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 90px;
+    background: white;
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.288) 0px 2px 8px 0px;
+}
