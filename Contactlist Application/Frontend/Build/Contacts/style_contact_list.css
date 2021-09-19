@@ -52,7 +52,7 @@ body {
     margin-bottom: 20px;
     box-shadow: rgba(149, 157, 165, 0) 0px 8px 24px;
     padding: 0 2px;
-    border-radius: 5px;
+    border-radius: 0px;
 }
 
 @media (max-width: 687px) {
@@ -174,7 +174,7 @@ tbody tr {
     box-shadow: rgba(0, 0, 0, 0.075) 0 3px 10px;
     padding: 15px 18px;
     color: var(--primary-blue);
-    border-radius: 3px;
+    border-radius: 0px;
     font-weight: bold;
     background-position: center;
     transition: background 0.3s;
@@ -266,16 +266,15 @@ tbody tr {
     width: 100%;
     display: flex;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 0px;
     position: relative;
 }
 
 #searchInput {
-    background-color: #F1F1F1;
-    box-shadow: inset 0px 0px 30px rgb(212, 212, 212);
+    background-color: #E9E9E9;
     padding: 15px;
     width: 100%;
-    border-radius: 3px;
+    border-radius: 0px;
     font-size: 0.9rem;
     border: none;
     color: black;
@@ -289,7 +288,7 @@ tbody tr {
     top: 0;
     border: none;
     background: var(--primary-blue);
-    border-radius: 3px;
+    border-radius: 0px;
     color: white;
     padding: 15px 60px;
     background-position: center;
@@ -321,7 +320,7 @@ tbody tr {
     width: 95%;
     margin-bottom: 8px;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 0px;
     padding: 14px;
     box-shadow: rgba(149, 157, 165, 0) 0px 8px 24px;
 }
@@ -353,7 +352,7 @@ tbody tr {
     width: 90px;
     background: white;
     position: absolute;
-    border-radius: 10px;
+    border-radius: 0px;
     box-shadow: rgba(0, 0, 0, 0.288) 0px 2px 8px 0px;
 }
 
@@ -386,7 +385,7 @@ tbody tr {
 .dropdown-menu a:hover {
     opacity: 0.8;
     background: var(--primary-blue);
-    border-radius: 3px;
+    border-radius: 0px;
     color: white;
 }
 
@@ -398,7 +397,7 @@ tbody tr {
     position: absolute;
     background: white;
     color: var(--primary-blue);
-    border-radius: 3px;
+    border-radius: 0px;
     padding: 25px;
     z-index: 10000;
     top: calc(100% + .7rem);

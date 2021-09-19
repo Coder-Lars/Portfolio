@@ -30,13 +30,19 @@ form input {
     padding: 15px;
     outline: none;
     font-size: 0.8rem;
-    border-radius: 3px;
+    border-radius: 0px;
     margin: 8px;
     font-weight: 100;
     border: none;
     background-color: #F1F1F1;
     transition: all 0.1s ease;
-    box-shadow: inset 0px 0px 20px rgba(212, 212, 212, 0.383);
+    background: 
+      linear-gradient(#cccccc, #cccccc) center bottom 5px /calc(100% - 10px) 1px no-repeat;
+}
+
+form input:focus {
+    background: 
+      linear-gradient(#487EB0, #487EB0) center bottom 5px /calc(100% - 10px) 1px no-repeat;
 }
 
 .content {
@@ -69,7 +75,7 @@ form button {
     border: none;
     color: white;
     font-weight: bold;
-    border-radius: 3px;
+    border-radius: 0px;
     margin: 20px 10px;
     margin-bottom: 5px;
     padding: 14px 10px;
@@ -96,7 +102,7 @@ form {
     background: white;
     box-shadow: rgba(0, 0, 0, 0.288) 0px 2px 8px 0px;
     padding: 45px;
-    border-radius: 5px;
+    border-radius: 0px;
     width: 45%;
 }
 
@@ -145,7 +151,7 @@ form {
     position: absolute;
     padding: 0;
     margin: 0;
-    border-radius: 10px;
+    border-radius: 0px;
     box-shadow: rgba(0, 0, 0, 0.288) 0px 2px 8px 0px;
 }
 
