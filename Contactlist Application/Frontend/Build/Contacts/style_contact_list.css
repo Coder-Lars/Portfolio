@@ -165,6 +165,7 @@ tbody tr {
 
 #th-icon {
     color: transparent;
+    visibility: hidden;
 }
 
 #addContact {
@@ -366,14 +367,27 @@ tbody tr {
     #searchInput {
         font-size: 0.8rem;
     }
+
+    .letter-icon {
+        font-size: 1rem;
+    }
+
+    #th-icon {
+        font-size: 1.5rem;
+    }
 }
 
 .dropdown-menu a {
     cursor: pointer;
+    padding: 5px 5px 7px 5px;
+    transition: all 0.2s;
 }
 
 .dropdown-menu a:hover {
     opacity: 0.8;
+    background: var(--primary-blue);
+    border-radius: 3px;
+    color: white;
 }
 
 .dropdown {
@@ -385,7 +399,7 @@ tbody tr {
     background: white;
     color: var(--primary-blue);
     border-radius: 3px;
-    padding: 20px;
+    padding: 25px;
     z-index: 10000;
     top: calc(100% + .7rem);
     opacity: 0;
