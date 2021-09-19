@@ -124,7 +124,7 @@ function loadContacts(email, password) {
         });
         listCheck(contactList);
         contactList = sortContactList(contactList);
-
+        console.log(contactList);
         //Update html object
         contactList.forEach(contact => {
             contact_table_body.appendChild(contact.htmlObject);
@@ -143,17 +143,18 @@ function sortContactList(n_contactList) {
     n_list = [];
     r_list = [];
     n_contactList.forEach(contact => {
-        n_list.push(contact.firstName);
+        n_list.push(contact.firstName.toUpperCase());
     });
     n_list.sort();
+    console.log(n_list);
     n_list.forEach(contact_name => {
         n_contactList.forEach(contactObject => {
-            if (contact_name == contactObject.firstName) {
+            if (contact_name == contactObject.firstName.toUpperCase()) {
                 r_list.push(contactObject);
             }
         });
     });
-
+    console.log(r_list);
     return r_list;
     
 }
@@ -215,8 +216,21 @@ function endLoading() {
 }
 
 function contactInformation(event) {
-    i_id = event.target.classList[1];
-    localStorage.setItem('CONTACT-ID', i_id);
+    inner_contact = event.target;
+    if (inner_contact.classList.contains("td-address") || inner_contact.classList.contains("td-name") || inner_contact.classList.contains("td-tel") || inner_contact.classList.contains("letter-icon")) {
+        inner_contact = inner_contact.parentElement;
+    }  
+    
+    const object = {
+        name: inner_contact.childNodes[1].innerText,
+        telephone: inner_contact.childNodes[2].innerText,
+        address: inner_contact.childNodes[3].innerText,
+        id: inner_contact.classList[0]
+    }
+
+    data = JSON.stringify(object);
+    console.log("saved");
+    localStorage.setItem('CONTACT_INFORMATION', data);
     open('page_contact_information.html', '_self');
 }
 

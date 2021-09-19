@@ -2,75 +2,56 @@
 
 //Html objects
 const content = document.querySelector('.content');
-const buttonBack = document.querySelector('.btn-back');
-const buttonEdit = document.querySelector('.btn-edit');
-const loadingBox = document.querySelector('.loadBox');
-const addressText = document.querySelector('#address');
-const telText = document.querySelector('#tel');
-
+const btn_back = document.querySelector('.btn-back');
+const btn_edit = document.querySelector('.btn-edit');
+const animation_load = document.querySelector('.loadBox');
+const text_address = document.querySelector('#address');
+const text_tel = document.querySelector('#tel');
+const text_name = document.querySelector('#name-text');
+const letter_logo = document.querySelector('#letter-logo')
 
 //Variables
-var id = null;
+
 
 
 //Event Listeners
 window.addEventListener('load', () => {
     startLoading();
-    id = localStorage.getItem('CONTACT-ID');
+    contact = localStorage.getItem('CONTACT_INFORMATION');
 
-    console.log(id);
-    if (id == "" || id == null) {
+    if (contact == "" || contact == null) {
         open('contacts.html', '_self');
     }
+    
+    contact = JSON.parse(contact)
 
-    loadContactInformation().then(result => {
-        addressText.innerHTML = result.address;
-        telText.innerHTML = result.tel;
-    })
+    text_name.innerHTML = contact.name;
+    letter_logo.innerHTML = contact.name.charAt(0).toUpperCase();
+    text_tel.innerHTML = contact.telephone;
+    text_address.innerHTML = contact.address;
+
+
     endLoading();
 })
 
-buttonBack.addEventListener('click', () => {
-    localStorage.setItem('CONTACT-ID', "");
-    open('contacts.html', '_self');
+btn_back.addEventListener('click', () => {
+    localStorage.setItem('CONTACT_INFORMATION', "");
+    open('page_contact_list.html', '_self');
 })
 
-buttonEdit.addEventListener('click', () => {
-    open('editContact.html', '_self');
+btn_edit.addEventListener('click', () => {
+    open('page_edit_contact.html', '_self');
 })
 
 //Functions
-function loadContactInformation() {
-    const promise = new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://192.168.178.57:8080/getContactById');
 
-        xhr.responseType = 'json';
-
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        xhr.onload = () => {
-            resolve(xhr.response);
-        };
-
-        const data = {
-            username: localStorage.getItem('USERNAME'),
-            password: localStorage.getItem('PASSWORD'),
-            id: id
-        };
-
-        xhr.send(JSON.stringify(data));
-
-    });
-    return promise;
-}
 
 function startLoading() {
-    loadingBox.style.display = 'flex';
+    animation_load.style.display = 'flex';
     content.style.pointerEvents = 'none';
 }
 
 function endLoading() {
-    loadingBox.style.display = 'none';
+    animation_load.style.display = 'none';
     content.style.pointerEvents = 'all'
 }
