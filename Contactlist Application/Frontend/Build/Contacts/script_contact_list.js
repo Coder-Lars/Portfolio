@@ -55,14 +55,14 @@ class contact {
 
 //Html Objects
 const contact_table_body = document.querySelector('#table-body');
-const logoutButton = document.querySelector('#profile-btn');
+const logoutButton = document.querySelector('#logout-btn');
 const newContactButton = document.querySelector('#addContact');
 const text_no_contacts = document.querySelector('.no-contacts');
 
 const searchInput = document.querySelector('#searchInput');
 const searchButton = document.querySelector('#btn-search');
 
-
+const fab_btn_new_contact = document.querySelector('#fab-add-contact');
 const animation_load = document.querySelector('.loadBox');
 const content = document.querySelector('.content');
 
@@ -74,6 +74,21 @@ logoutButton.addEventListener('click', logout);
 searchButton.addEventListener('click', search);
 searchInput.addEventListener('input', search);
 newContactButton.addEventListener('click', addNewContact);
+fab_btn_new_contact.addEventListener('click', addNewContact);
+document.addEventListener('click', e => {
+    const isDropdownButton = e.target.matches("[data-dropdown-button]");
+    if (!isDropdownButton && e.target.closest('[data-dropdown-button]') != null) return;
+    let currentDropdown
+    if (isDropdownButton) {
+        currentDropdown = e.target.closest('[data-dropdown]');
+        currentDropdown.classList.toggle('active');
+    }
+
+    document.querySelectorAll("[data-dropdown].active").forEach(dropwdown => {
+        if (dropwdown === currentDropdown) return
+        dropwdown.classList.remove("active")
+    })
+})
 
     //OnLoad
 window.addEventListener('load', () => {

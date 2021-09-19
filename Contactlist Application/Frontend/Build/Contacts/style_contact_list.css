@@ -121,6 +121,7 @@ tbody tr:hover {
 }
 
 tbody tr {
+    cursor: pointer;
     position: relative;
 }
 
@@ -168,22 +169,70 @@ tbody tr {
 
 #addContact {
     border: none;
-    background: #558dbd;
+    background: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.075) 0 3px 10px;
-    padding: 15px 24px;
-    color: white;
+    padding: 15px 18px;
+    color: var(--primary-blue);
     border-radius: 3px;
     font-weight: bold;
-    transition: background 0.2s;
+    background-position: center;
+    transition: background 0.3s;
+}
+
+#addContact i {
+    margin-right: 8px;
+    margin-top: 4px;
 }
 
 #addContact:hover {
-    opacity: 0.8;
+    background: rgb(226, 228, 236) radial-gradient(circle, transparent 1%, #becfee 1%) center/15000%;
 }
 
 #addContact:active {
-    opacity: 1;
+    background-color: #81acd1;
+    background-size: 100%;
+    transition: background 0s;
 }
+
+#fab-add-contact {
+    position: absolute;
+    display: none;
+    width: 60px;
+    height: 60px;
+    color: white;
+    font-size: 1.3rem;
+    right: 40px;
+    bottom: 40px;
+    border: none;
+    background: var(--primary-blue);
+    border-radius: 100px;
+    background-position: center;
+    transition: background 0.3s;
+}
+
+@media (max-width: 800px) {
+    #addContact {
+        display: none;
+    }
+
+    #fab-add-contact {
+        display: block;
+    }
+}
+
+
+
+#fab-add-contact:hover {
+    background: var(--button-hover) radial-gradient(circle, transparent 1%, var(--primary-blue) 1%) center/15000%;
+}
+
+#fab-add-contact:active {
+    background-color: var(--primary-blue);
+    background-size: 100%;
+    transition: background 0s;
+}
+
+
 
 .btn-profile {
     background-color: white;
@@ -194,6 +243,7 @@ tbody tr {
     border: none;
     font-size: 1.7rem;
     transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .nav-buttons {
@@ -202,6 +252,7 @@ tbody tr {
     align-items: center;
 }
 
+.dropdown.active > .btn-profile,
 .btn-profile:hover {
     opacity: 0.8;
 }
@@ -236,14 +287,23 @@ tbody tr {
     font-size: 0.9rem;
     top: 0;
     border: none;
-    background-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+    background: var(--primary-blue);
     border-radius: 3px;
     color: white;
     padding: 15px 60px;
+    background-position: center;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .topBar form button:hover {
-    opacity: 0.7;
+    background: var(--button-hover) radial-gradient(circle, transparent 1%, var(--primary-blue) 1%) center/15000%;
+}
+
+.topBar form button:active {
+    background-color: var(--primary-blue);
+    background-size: 100%;
+    transition: background 0s;
 }
 
 #searchInput::placeholder {
@@ -272,7 +332,7 @@ tbody tr {
     background: transparent;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
-    border-top-color: #DA22FF;
+    border-top-color: var(--primary-blue);
     z-index: 10000;
     display: block;
 }
@@ -306,4 +366,38 @@ tbody tr {
     #searchInput {
         font-size: 0.8rem;
     }
+}
+
+.dropdown-menu a {
+    cursor: pointer;
+}
+
+.dropdown-menu a:hover {
+    opacity: 0.8;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background: white;
+    color: var(--primary-blue);
+    border-radius: 3px;
+    padding: 20px;
+    z-index: 10000;
+    top: calc(100% + .7rem);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    box-shadow: rgba(0, 0, 0, 0.185) 0 3px 10px;
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+
+.dropdown.active > .btn-profile + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }

@@ -76,6 +76,7 @@ form input {
 
 
 form button {
+    cursor: pointer;
     background: var(--primary-blue);
     border: none;
     color: white;
