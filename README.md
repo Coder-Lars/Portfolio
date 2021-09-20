@@ -1,2 +1,5 @@
 # Portfolio
-Projects I have worked on
+## A showcase of projects I have worked on
+
+### Contactlist Application
+
