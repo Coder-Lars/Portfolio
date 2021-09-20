@@ -105,6 +105,8 @@ window.addEventListener('load', () => {
         document.body.innerHTML = "Error";
         open('../Auth/page_login.html', '_self')
     }
+
+    document.querySelector('#profile-btn').innerHTML = localStorage.getItem('USERNAME').charAt(0).toUpperCase();
 });
 
 //Functions
