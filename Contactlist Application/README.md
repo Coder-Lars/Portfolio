@@ -1,6 +1,7 @@
 # Contactlist
 
 * User Authentication
+* Contacts get stored in a database
 
 ## Login Page
 ![login_page](https://user-images.githubusercontent.com/71517515/134017719-928ca7db-f6c4-4714-ade5-30bf1b7bad28.PNG)
