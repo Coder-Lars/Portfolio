@@ -17,3 +17,6 @@
 
 ## Edit Contact
 ![edit_contact_page](https://user-images.githubusercontent.com/71517515/134018052-7b30161d-f762-4672-a930-f6cb0e568ae9.PNG)
+
+# Completely Responsive Design
+![responsive_showcase](https://user-images.githubusercontent.com/71517515/134019156-1c93fea9-63ef-4660-b02f-1fa04d13f9ac.PNG)
