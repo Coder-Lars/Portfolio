@@ -11,9 +11,12 @@
 
 
 ### Todolist Application
-* sortable todolist
+* filterable todolist
 * [Read More](https://github.com/Coder-Lars/Portfolio/tree/main/Projects/Todolist)
 
+
+
+![Todolist_Preview](https://user-images.githubusercontent.com/71517515/135742286-fb016a28-02d9-455e-a69d-a6b11f3f4a85.PNG)
 
 
 
