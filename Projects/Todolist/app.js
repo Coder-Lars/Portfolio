@@ -7,7 +7,6 @@ const filterOption = document.querySelector('.filter-todo');
 const clearButton = document.querySelector('.clear-all');
 
 filterOption.disabled = true;
-clearButton.disabled = true;
 
 //Listeners
 window.addEventListener('load', getTodos);
@@ -86,6 +85,7 @@ function deleteCheck(e) {
 
 function filterTodo(e) {
     const todos = todoList.childNodes;
+    let isEmpty = true;
     todos.forEach((todo) => {
         //check for undefined values and skips then and only apply the switch statement on nodes with properties 
         if (todo.classList !== undefined) {
@@ -93,16 +93,19 @@ function filterTodo(e) {
                 case "uncompleted":
                     if (!todo.classList.contains("completed")) {
                         todo.style.display = "flex";
+                        isEmpty = false;
                     } else {
                         todo.style.display = "none";
                     }
                 break;
                 case "all":
                     todo.style.display = "flex";
+                    isEmpty = false;
                     break;
                 case "completed":
                     if (todo.classList.contains("completed")) {
                         todo.style.display = "flex";
+                        isEmpty = false;
                     } else {
                         todo.style.display = "none";
                     }
@@ -111,6 +114,21 @@ function filterTodo(e) {
         }
         return;
         });
+    console.log(isEmpty);
+    if (isEmpty) {
+        const text = document.createElement('p');
+        text.innerText = "No element found";
+        text.classList.add('empty-text');
+        todoList.appendChild(text);
+            
+        clearButton.disabled = true;
+    } else {
+        console.log('hello');
+        clearButton.disabled = false;
+        todoList.querySelectorAll('p').forEach(text => {
+            text.remove();
+        })
+    }
 }
 
 function clearAll() {
@@ -151,7 +169,9 @@ function getTodos() {
     } else {
         if (localStorage.getItem('todos') == "[]") {
             clearButton.disabled = true;
+            filterOption.disabled = true;
         } else {
+            filterOption.disabled = false;
             clearButton.disabled = false;
         }
         todos = JSON.parse(localStorage.getItem('todos'));
