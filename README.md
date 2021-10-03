@@ -15,8 +15,8 @@
 * [Read More](https://github.com/Coder-Lars/Portfolio/tree/main/Projects/Todolist)
 
 
+![Todolist_Preview_](https://user-images.githubusercontent.com/71517515/135742388-d7bea460-cae4-4195-b5e9-834d39bf7f63.PNG)
 
-![Todolist_Preview](https://user-images.githubusercontent.com/71517515/135742286-fb016a28-02d9-455e-a69d-a6b11f3f4a85.PNG)
 
 
 
