@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="style_contact_list.css">
+    <link rel="icon" type="image/png" href="../IMG/facicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="loadBox"><div class="loadingCircle"></div></div>
+    <button id="fab-add-contact"><i class="fas fa-plus"></i></button>
+    <div class="content">
+        <div class="nav">
+            <h1 class="mainHeading">Contacts</h1>
+            <div class="nav-buttons">
+                <button id="addContact" class="btn-add-contact"><i class="fas fa-plus"></i>Add Contact</button>
+                <div class="dropdown" data-dropdown>
+                    <button id="profile-btn" class="btn-profile" data-dropdown-button>L</button>
+                    <div class="dropdown-menu">
+                        <a id="logout-btn">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="topBar">
+            <form action="submit">
+               <input type="text" placeholder="Type to search.." id="searchInput">
+               <button id="btn-search" class="btn-search">Search</button>
+           </form>
+        </div>
+        <div class="main">
+            
+            <table id="contactList">
+                <thead>
+                    <tr>
+                        <th id="th-icon">icon</th>
+                        <th id="th-name">Name</th>
+                        <th id="th-tel">Telephone</th>
+                        <th id="th-address">Address</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+
+            </table>
+            <p style="text-align: center; color: rgba(0, 0, 0, 0.561); padding: 30px;" class="no-contacts">No contacts found</p>
+        </div>
+    </div>
+    
+    
+
+    <script src="script_contact_list.js"></script>
+</body>
+</html>
